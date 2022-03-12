@@ -1,15 +1,20 @@
 import { Injectable } from '@angular/core';
-import SelectedView from "./models/selectedView";
-import * as moment from "moment";
+import SelectedView from './models/selectedView';
+import * as moment from 'moment';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SelectedIntervalService {
   now = moment(); // todo add changing every second
-  lastSelectedDay = moment();
-  selectedView$:  BehaviorSubject<SelectedView> = new BehaviorSubject('day' as SelectedView);
+
+  lastSelectedDay: moment.Moment = moment().startOf('date');
+
+  dayHours = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23];
+
+  selectedView$: BehaviorSubject<SelectedView> = new BehaviorSubject('day' as SelectedView);
+
   selectedInterval: moment.Moment[] = [];
 
   constructor() {
@@ -25,14 +30,12 @@ export class SelectedIntervalService {
           this.selectedInterval = this.createWeekInterval(this.lastSelectedDay);
           break;
       }
-      console.log(this.selectedInterval);
     });
   }
 
   createDayInterval(day: moment.Moment) {
     const startOfDay = moment(day).startOf('date');
     const endOfDay = moment(day).endOf('date');
-    debugger;
 
     return [startOfDay, endOfDay];
   }
