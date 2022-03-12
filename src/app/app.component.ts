@@ -1,21 +1,22 @@
 import { Component } from '@angular/core';
-import SelectedView from "./models/selectedView";
-import { SelectedIntervalService } from "./selected-interval.service";
-import {BehaviorSubject} from "rxjs";
+import SelectedView from './models/selectedView';
+import { SelectedIntervalService } from './selected-interval.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
-
 export class AppComponent {
   title = 'tasks-list';
+
   isOpen: boolean = false;
+
   selectedView$: BehaviorSubject<SelectedView>;
 
   constructor(selectedIntervalService: SelectedIntervalService) {
-    this.selectedView$ = selectedIntervalService.selectedView$
+    this.selectedView$ = selectedIntervalService.selectedView$;
   }
 
   onMenuClick() {

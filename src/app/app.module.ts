@@ -10,20 +10,9 @@ import { OneDayComponent } from './one-day/one-day.component';
 import { ThreeDaysComponent } from './three-days/three-days.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    TopPanelComponent,
-    OneDayComponent,
-    ThreeDaysComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MaterialExampleModule,
-  ],
+  declarations: [AppComponent, TopPanelComponent, OneDayComponent, ThreeDaysComponent],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, MaterialExampleModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule {}

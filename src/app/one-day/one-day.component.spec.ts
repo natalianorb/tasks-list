@@ -8,9 +8,8 @@ describe('OneDayComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OneDayComponent ]
-    })
-    .compileComponents();
+      declarations: [OneDayComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

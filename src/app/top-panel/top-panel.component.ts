@@ -4,14 +4,12 @@ import SelectedView from '../models/selectedView';
 @Component({
   selector: 'app-top-panel',
   templateUrl: './top-panel.component.html',
-  styleUrls: ['./top-panel.component.scss']
+  styleUrls: ['./top-panel.component.scss'],
 })
-
 export class TopPanelComponent {
   @Output() menuClick = new EventEmitter();
-  @Output() viewChange = new EventEmitter<SelectedView>();
 
-  constructor() { }
+  @Output() viewChange = new EventEmitter<SelectedView>();
 
   onMenuClick(): void {
     this.menuClick.emit();
@@ -20,5 +18,4 @@ export class TopPanelComponent {
   onViewSelect(selectedView: SelectedView): void {
     this.viewChange.emit(selectedView);
   }
-
 }
