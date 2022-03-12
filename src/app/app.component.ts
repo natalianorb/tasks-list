@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import SelectedView from "./models/selectedView";
-import * as moment from 'moment'
+import { SelectedIntervalService } from "./selected-interval.service";
+import {BehaviorSubject} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -11,15 +12,10 @@ import * as moment from 'moment'
 export class AppComponent {
   title = 'tasks-list';
   isOpen: boolean = false;
-  selectedView: SelectedView = 'day';
-  now = moment(); // todo add changing every second
-  selectedInterval: moment.Moment[];
+  selectedView$: BehaviorSubject<SelectedView>;
 
-  constructor() {
-    const startOfDay = this.now.startOf('day');
-    const endOfDay = this.now.endOf('day');
-
-    this.selectedInterval = [startOfDay, endOfDay];
+  constructor(selectedIntervalService: SelectedIntervalService) {
+    this.selectedView$ = selectedIntervalService.selectedView$
   }
 
   onMenuClick() {
@@ -27,7 +23,6 @@ export class AppComponent {
   }
 
   onViewChange(selectedView: SelectedView) {
-    this.selectedView = selectedView;
-    // todo add selectedInterval's dependency
+    this.selectedView$.next(selectedView);
   }
 }
