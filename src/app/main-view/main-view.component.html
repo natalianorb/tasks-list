@@ -1,0 +1,8 @@
+<div [ngSwitch]="selectedView">
+  <app-one-day *ngSwitchCase="'day'" [day]="selectedInterval[0]" (hourClick)="onHourClick($event)"></app-one-day>
+  <div *ngSwitchCase="'3 days'" class="three-days">
+    <app-one-day [day]="selectedInterval[0]" (hourClick)="onHourClick($event)"></app-one-day>
+    <app-one-day [day]="selectedInterval[1]" (hourClick)="onHourClick($event)"></app-one-day>
+    <app-one-day [day]="selectedInterval[2]" (hourClick)="onHourClick($event)"></app-one-day>
+  </div>
+</div>

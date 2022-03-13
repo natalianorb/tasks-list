@@ -1,6 +1,7 @@
-<div>
+<div class="one-day">
   <div *ngFor="let hour of hours">
-    <button mat-button color="primary" (click)="onHourClick(hour)">{{ hour }}</button>
+    <button mat-button color="primary" (click)="onHourClick(hour)" class="create-button">
+    </button>
     <mat-divider></mat-divider>
   </div>
 </div>

@@ -3,10 +3,7 @@
 <mat-sidenav-container>
   <mat-sidenav mode="side" [opened]="isOpen">Month Calendar</mat-sidenav>
   <mat-sidenav-content>
-    <div [ngSwitch]="selectedView$ | async">
-      <app-one-day *ngSwitchCase="'day'"></app-one-day>
-      <app-three-days *ngSwitchCase="'3 days'"></app-three-days>
-    </div>
+    <app-main-view [selectedView]="selectedView$ | async" (hourClick)="addTask($event)"></app-main-view>
   </mat-sidenav-content>
 </mat-sidenav-container>
 

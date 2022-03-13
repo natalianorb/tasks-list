@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import SelectedView from '../models/selectedView';
+import { SelectedView } from '../shared/models/selected-view';
 
 @Component({
   selector: 'app-top-panel',

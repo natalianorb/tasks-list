@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import SelectedView from './models/selectedView';
-import { SelectedIntervalService } from './selected-interval.service';
+import { SelectedView } from './shared/models/selected-view';
+import { SelectedIntervalService } from './shared/services/selected-interval.service';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
@@ -17,6 +17,10 @@ export class AppComponent {
 
   constructor(selectedIntervalService: SelectedIntervalService) {
     this.selectedView$ = selectedIntervalService.selectedView$;
+  }
+
+  addTask(time: moment.Moment) {
+    console.log(time);
   }
 
   onMenuClick() {

@@ -1,19 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ThreeDaysComponent } from './three-days.component';
+import { MainViewComponent } from './main-view.component';
 
-describe('ThreeDaysComponent', () => {
-  let component: ThreeDaysComponent;
-  let fixture: ComponentFixture<ThreeDaysComponent>;
+describe('MainViewComponent', () => {
+  let component: MainViewComponent;
+  let fixture: ComponentFixture<MainViewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ThreeDaysComponent],
-    }).compileComponents();
+      declarations: [ MainViewComponent ]
+    })
+    .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ThreeDaysComponent);
+    fixture = TestBed.createComponent(MainViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

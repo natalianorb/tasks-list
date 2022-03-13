@@ -7,10 +7,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialExampleModule } from '../material.module';
 import { TopPanelComponent } from './top-panel/top-panel.component';
 import { OneDayComponent } from './one-day/one-day.component';
-import { ThreeDaysComponent } from './three-days/three-days.component';
+import { MainViewComponent } from './main-view/main-view.component';
 
 @NgModule({
-  declarations: [AppComponent, TopPanelComponent, OneDayComponent, ThreeDaysComponent],
+  declarations: [AppComponent, TopPanelComponent, OneDayComponent, MainViewComponent],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, MaterialExampleModule],
   providers: [],
   bootstrap: [AppComponent],
