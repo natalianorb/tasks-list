@@ -1,0 +1,38 @@
+<div class="create-task">
+  <h1 mat-dialog-title class="create-task__title">Add new task</h1>
+
+  <form mat-dialog-content>
+    <mat-form-field appearance="fill" class="create-task__title-input">
+      <mat-label>Title</mat-label>
+      <input matInput [formControl]="title">
+      <mat-error *ngIf="title.invalid">Title is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Start day</mat-label>
+      <input matInput [matDatepicker]="startDate" [formControl]="dateStart">
+      <mat-datepicker #startDate></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Start time</mat-label>
+      <input matInput [type]="'time'" [formControl]="timeStart">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea matInput [formControl]="description"></textarea>
+    </mat-form-field>
+  </form>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="onCancelClick()">Cancel</button>
+    <button
+      mat-button
+      color="accent"
+      [mat-dialog-close]="createTaskData"
+      (click)="onAddClick()"
+      [disabled]="title.invalid"
+    >Add</button>
+  </div>
+</div>

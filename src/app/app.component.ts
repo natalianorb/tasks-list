@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { SelectedView } from './shared/models/selected-view';
 import { SelectedIntervalService } from './shared/services/selected-interval.service';
 import { BehaviorSubject } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { CreateTaskComponent } from './create-task/create-task.component';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-root',
@@ -15,12 +18,25 @@ export class AppComponent {
 
   selectedView$: BehaviorSubject<SelectedView>;
 
-  constructor(selectedIntervalService: SelectedIntervalService) {
+  constructor(selectedIntervalService: SelectedIntervalService, public dialog: MatDialog) {
     this.selectedView$ = selectedIntervalService.selectedView$;
   }
 
-  addTask(time: moment.Moment) {
-    console.log(time);
+  openDialog(time: moment.Moment) {
+    const dialogConfig = {
+      width: '340px',
+      data: {
+        title: '',
+        desc: '',
+        timeStart: time,
+        timeEnd: moment(time).add(1, 'hour'),
+      },
+    };
+    const dialogRef = this.dialog.open(CreateTaskComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(result);
+    });
   }
 
   onMenuClick() {

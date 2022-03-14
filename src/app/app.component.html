@@ -3,7 +3,7 @@
 <mat-sidenav-container>
   <mat-sidenav mode="side" [opened]="isOpen">Month Calendar</mat-sidenav>
   <mat-sidenav-content>
-    <app-main-view [selectedView]="selectedView$ | async" (hourClick)="addTask($event)"></app-main-view>
+    <app-main-view [selectedView]="selectedView$ | async" (hourClick)="openDialog($event)"></app-main-view>
   </mat-sidenav-content>
 </mat-sidenav-container>
 
