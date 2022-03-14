@@ -1,10 +1,26 @@
 .create-task {
   text-align: center;
   &__title-input {
+    width: 100%;
     margin-bottom: 15px;
   }
-  .mat-dialog-actions {
+  &__date-time {
     display: flex;
+    justify-content: space-between;
+  }
+  &__date {
+    max-width: 188px;
+  }
+  &__time {
+    max-width: 100px;
+  }
+  &__toggle {
+    margin-right: -8px;
+  }
+  &__description {
+    width: 100%;
+  }
+  .mat-dialog-actions {
     justify-content: space-around;
   }
 }

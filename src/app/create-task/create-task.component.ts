@@ -10,6 +10,11 @@ export interface CreateTaskData {
   desc: string;
 }
 
+interface DayTime {
+  hours: number;
+  minutes: number;
+}
+
 @Component({
   selector: 'app-create-task',
   templateUrl: './create-task.component.html',
@@ -35,13 +40,13 @@ export class CreateTaskComponent {
     const timeStart = moment(this.createTaskData.timeStart);
     const timeEnd = moment(this.createTaskData.timeEnd);
 
+    this.timeStart = new FormControl(timeStart.format('HH:mm'));
+    this.timeEnd = new FormControl(timeEnd.format('HH:mm'));
     this.dateStart = new FormControl({
       value: moment(this.createTaskData.timeStart),
       disabled: true,
     });
     this.dateEnd = new FormControl(moment(this.createTaskData.timeEnd));
-    this.timeStart = new FormControl(`${timeStart.hour()}:${timeStart.minute()}`);
-    this.timeEnd = new FormControl(`${timeEnd.hour()}:${timeEnd.minute()}`);
   }
 
   onCancelClick(): void {
@@ -50,12 +55,29 @@ export class CreateTaskComponent {
 
   onAddClick(): void {
     let result = {} as CreateTaskData;
+    const selectedStartTime = this.parseTime(this.timeStart.value);
+    const selectedEndTime = this.parseTime(this.timeEnd.value);
 
     result.title = this.title.value;
     result.desc = this.description.value;
-    result.timeStart = this.timeStart.value; // todo add date
-    result.timeEnd = this.timeEnd.value; // todo add date
+    result.timeStart = this.dateStart.value
+      .set('hour', selectedStartTime.hours)
+      .set('minute', selectedStartTime.minutes);
+    result.timeEnd = this.dateEnd.value
+      .set('hour', selectedEndTime.hours)
+      .set('minute', selectedEndTime.minutes);
 
     this.dialogRef.close(result);
+  }
+
+  parseTime(timeString: string): DayTime {
+    const arr = timeString.split(':');
+    const hours = Number(arr[0]);
+    const minutes = arr[1] ? Number(arr[1]) : 0;
+
+    return {
+      hours,
+      minutes,
+    };
   }
 }

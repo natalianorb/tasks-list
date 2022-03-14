@@ -24,7 +24,8 @@ export class AppComponent {
 
   openDialog(time: moment.Moment) {
     const dialogConfig = {
-      width: '340px',
+      maxWidth: '360px',
+      width: '360px',
       data: {
         title: '',
         desc: '',

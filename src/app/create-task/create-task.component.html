@@ -2,26 +2,45 @@
   <h1 mat-dialog-title class="create-task__title">Add new task</h1>
 
   <form mat-dialog-content>
-    <mat-form-field appearance="fill" class="create-task__title-input">
+    <mat-form-field appearance="outline" class="create-task__title-input">
       <mat-label>Title</mat-label>
       <input matInput [formControl]="title">
       <mat-error *ngIf="title.invalid">Title is required</mat-error>
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Start day</mat-label>
-      <input matInput [matDatepicker]="startDate" [formControl]="dateStart">
-      <mat-datepicker #startDate></mat-datepicker>
-    </mat-form-field>
+    <div class="create-task__date-time">
+      <mat-form-field appearance="outline" class="create-task__date">
+        <mat-label>Start day</mat-label>
+        <input matInput [matDatepicker]="startDate" [formControl]="dateStart">
+        <mat-datepicker-toggle matSuffix [for]="startDate" class="create-task__toggle">
+        </mat-datepicker-toggle>
+        <mat-datepicker #startDate></mat-datepicker>
+      </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Start time</mat-label>
-      <input matInput [type]="'time'" [formControl]="timeStart">
-    </mat-form-field>
+      <mat-form-field appearance="outline" class="create-task__time">
+        <mat-label>Start time</mat-label>
+        <input matInput [type]="'time'" [formControl]="timeStart">
+      </mat-form-field>
+    </div>
 
-    <mat-form-field appearance="fill">
+    <div class="create-task__date-time">
+      <mat-form-field appearance="outline" class="create-task__date">
+        <mat-label>End day</mat-label>
+        <input matInput [matDatepicker]="endDay" [formControl]="dateEnd">
+        <mat-datepicker-toggle matSuffix [for]="endDay" class="create-task__toggle">
+        </mat-datepicker-toggle>
+        <mat-datepicker #endDay></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="create-task__time">
+        <mat-label>End time</mat-label>
+        <input matInput [type]="'time'" [formControl]="timeEnd">
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline" class="create-task__description">
       <mat-label>Description</mat-label>
-      <textarea matInput [formControl]="description"></textarea>
+      <textarea matInput [formControl]="description" rows="4"></textarea>
     </mat-form-field>
   </form>
 
